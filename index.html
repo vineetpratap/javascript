@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>seats</title>
+		<meta name="description" content="" />
+		<meta name="author" content="vineet" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<script type="text/javascript" src="seat_selection_with_iscroll.js"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+				h1{
+				font-size: 1em;
+			}
+			.viewport{
+				overflow: hidden;
+				z-index: 1000;
+				background-color:#808080;
+			}
+			.viewport > div{
+				float: left;
+				overflow: hidden;
+			}
+			.left_panel{
+				border-right: 1px solid #0000ff;
+			}
+			.left_panel .stack{
+				position: relative;
+			}
+			.left_panel .cell{
+				background-color: green;
+				color: white;
+				border-bottom: 1px solid yellow;
+				z-index:100;
+			}
+			.right_panel{
+				position:absolute;
+				right:0px;
+			}
+
+			.bottom_panel{
+				border-top: 1px solid #0000ff;
+			}
+			.bottom_panel .stack{
+				position: relative;
+				left: 0;
+			}
+			.bottom_panel .cell{
+				background-color: blue;
+				color: white;
+			}
+			.cell{
+				float: left;
+				border-bottom: 1px solid green;
+				border-left: 1px solid green;
+				text-align: center;
+				font-size:11px;
+				background-color:#ffffff;
+			}
+			.tb{
+				border-top: 1px solid green;
+			}
+			
+			.rb{
+				border-right: 1px solid green;
+			}
+			
+			.viewport_1{
+				overflow: hidden;
+				z-index: 1000;
+				background-color:#eeeeee;
+			}
+			.viewport_1 > div{
+				float: left;
+				overflow: hidden;
+			}
+			.viewport_1 .left_panel_1{
+				border-right: 1px solid #0000ff;
+			}
+			.viewport_1 .left_panel_1 .cell{
+				background-color: blue;
+				color: white;
+				border-bottom: 1px solid yellow;
+				z-index:100;
+			}
+			
+			.viewport_1 .cell{
+				float: left;
+				border-bottom: 1px solid blue;
+				border-left: 1px solid blue;
+				text-align: center;
+				font-size:11px;
+				background-color:#ffffff;
+			}
+			
+			.viewport_1 .bottom_panel .cell{
+				background-color: green;
+				color: white;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<header>
+				<h1>Select Seats</h1>
+			</header>
+1.<br/>
+			<div class="viewport">
+				<div class="left_panel"><div class="stack" style="-webkit-transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) scale(1);"></div></div>
+				<div class="right_panel"><div class="stack"></div></div>
+				<div class="bottom_panel" ><div class="stack" style="-webkit-transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) scale(1);"></div></div>
+			</div>
+
+		<script type="text/javascript">
+		
+		var seatMap = new SeatsMap();
+		
+		//Use this for high compatibility (iDevice + Android)
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(function(){
+			seatMap.createCells(); // (optional) use this function if you want to genrate grid cells via javascript
+			seatMap.loaded();
+		}, 200); }, false);
+		
+		</script>
+		<br/>
+2.		<br/>
+		<div class="viewport_1">
+			<div class="left_panel_1"><div class="stack" style="-webkit-transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) scale(1);"></div></div>
+			<div class="right_panel"><div class="stack"></div></div>
+			<div class="bottom_panel" ><div class="stack" style="-webkit-transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) scale(1);"></div></div>
+		</div>
+		<script type="text/javascript">
+		
+			var seatMap1 = new SeatsMap({
+				no_of_rows:10,
+				no_of_columns:30,
+				no_of_visible_rows:5,
+				no_of_visible_columns:10,
+				viewport:document.querySelector(".viewport_1"),
+				left_panel:document.querySelector(".viewport_1 .left_panel_1")
+				});
+		
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(function(){
+			seatMap1.createCells();
+			seatMap1.loaded();
+		}, 200); }, false);
+		
+		</script>
+		
+		<footer>
+				<p>
+					&copy; Copyright  by July Systems
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
